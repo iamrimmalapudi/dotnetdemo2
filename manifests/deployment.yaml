@@ -1,22 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnet-course
+  name: nagaautodeploy
   labels:
-    app: dotnet-course
-  namespace: demo-aks-course
+    app: nagaautodeploy
+    kubernetes.azure.com/generator: devhub
+  namespace: naganamespace
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dotnet-course
+      app: nagaautodeploy
   template:
     metadata:
       labels:
-        app: dotnet-course
+        app: nagaautodeploy
     spec:
       containers:
-        - name: dotnet-course
-          image: cdacn.azurecr.io/demo-1709362170553:latest
+        - name: nagaautodeploy
+          image: nagatestdevopsregistry.azurecr.io/image-workflow-1734115256129:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
